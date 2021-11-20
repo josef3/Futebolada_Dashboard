@@ -1,4 +1,3 @@
-
 # Dashboard Futeb⚽lada
 
 As part of the Futeb⚽lada project 
@@ -27,7 +26,12 @@ We also have some features in mind that I hope to be live soon 👀.
 ## Tech stack 👨‍💻
 
 - React - A JavaScript library for building user interfaces
-- [MUI Icon](https://mui.com/static/logo.png) MUI - React UI library
+- Typescript - Strongly typed programming language
+- MUI - React UI library
+- React-Hook-Form - Library to manage forms
+- Yup - Schema builder for value parsing and validation
+- SWR - Library that uses stale-while-revalidate cache invalidation strategy
+- date-fns - Date utility library
 ## Demo 🚀
 
 The dashboard is deployed at: https://futebolada-dashboard.netlify.app . 
