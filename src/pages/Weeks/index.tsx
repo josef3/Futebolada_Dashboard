@@ -104,7 +104,7 @@ const Weeks: React.FC = () => {
                 flex: 1,
                 minWidth: 200,
                 type: 'dateTime',
-                renderCell: ({ value }: GridRenderCellParams) => new Date(value).toLocaleString()
+                renderCell: ({ value }: GridRenderCellParams) => !!value ? new Date(value).toLocaleString() : '#N/D'
             },
             {
                 field: 'actions',
