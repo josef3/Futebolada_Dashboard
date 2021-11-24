@@ -11,7 +11,7 @@ import GroupsIcon from '@mui/icons-material/GroupsRounded';
 //-------------------- Components --------------------------
 import Item from './Item';
 //-------------------- Utils --------------------------
-import useToggle from '../../hooks/useToggle';
+import { useSidebarConfig } from '../../contexts/sidebarConfig';
 import useWindowSize from '../../hooks/useWindowSize';
 //----------------------------------------------------------
 
@@ -54,23 +54,28 @@ export const sidebarOptions = [
 ]
 
 const Sidebar: React.FC = () => {
-    const [isOpen, toggleIsOpen] = useToggle(true);
     const { width } = useWindowSize();
+    const { sidebarConfig: { sidebarIsOpen }, sidebarConfigDispatch } = useSidebarConfig();
+
+    const handleToggle = () => sidebarConfigDispatch({ type: 'TOGGLE_SIDEBAR_OPEN' });
 
     //if window size width is smaller than 900 the sidebar should be closed
     useEffect(() => {
-        if (width && width < 900 && isOpen) {
-            toggleIsOpen();
+        if (width && width < 900 && sidebarIsOpen) {
+            handleToggle();
         }
-    }, [width])
+    }, [width]);
 
     return (
         <Aside>
-            <Toggler onClick={toggleIsOpen}>{isOpen ? '<' : '>'}</Toggler>
             <Typography variant='h3' m='0 auto 2rem auto'>⚽</Typography>
             {sidebarOptions.map((option) => (
-                <Item key={option.title} {...option} isOpen={isOpen} />
+                <Item key={option.title} {...option} isOpen={sidebarIsOpen} />
             ))}
+
+            <Toggler onClick={handleToggle}>
+                {sidebarIsOpen ? '<' : '>'}
+            </Toggler>
         </Aside>
     )
 }
