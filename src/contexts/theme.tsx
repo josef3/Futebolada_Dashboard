@@ -17,7 +17,7 @@ interface InitContextProps {
 }
 
 const initialState: ThemeProps = {
-    darkMode: false,
+    darkMode: false
 }
 
 export const ThemeContext = createContext({} as InitContextProps);
@@ -28,7 +28,7 @@ export const themeReducer: Reducer<ThemeProps, Actions> = (state, action) => {
             localStorage.setItem('color-mode', state.darkMode ? 'light' : 'dark');
             return {
                 ...state,
-                darkMode: state.darkMode ? false : true
+                darkMode: !state.darkMode
             }
         case 'SET_THEME':
             localStorage.setItem('color-mode', String(action.payload?.colorMode));
