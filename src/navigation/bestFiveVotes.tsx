@@ -5,7 +5,7 @@ import Content from './Content';
 import PrivateRoute from '../components/PrivateRoute';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
-import BestFiveVotes from '../pages/BestFiveVotes';
+// import BestFiveVotes from '../pages/BestFiveVotes';
 //----------------------------------------------------------
 
 const BASE_URL = '/dashboard/votos/melhores-5';
@@ -18,7 +18,7 @@ const BestFivesNavigation: React.FC = () => {
                     <Sidebar />
                     <Content>
                         <Header />
-                        <BestFiveVotes />
+                        {/* <BestFiveVotes /> */}
                     </Content>
                 </Container>
             </PrivateRoute>
