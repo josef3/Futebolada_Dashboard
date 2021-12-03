@@ -5,8 +5,10 @@ import { Avatar, Divider, Menu, MenuItem, Typography, Button, IconButton } from 
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 //-------------------- Components --------------------------
 import ConfirmationDialog from '../ConfirmationDialog';
+import ChangePasswordModal from './ChangePasswordModal';
 //-------------------- Utils --------------------------
 import { useAuth } from '../../contexts/auth';
+import useToggle from '../../hooks/useToggle';
 //----------------------------------------------------------
 
 const AvatarPopover: React.FC = () => {
@@ -20,14 +22,11 @@ const AvatarPopover: React.FC = () => {
 
     const [popoverRef, setPopoverRef] = useState<null | HTMLElement>(null);
     const popoverOpen = !!popoverRef;
-
     const handlePopoverClick = (event: React.MouseEvent<HTMLElement>) => setPopoverRef(event.currentTarget);
     const handlePopoverClose = () => setPopoverRef(null);
 
-    const [dialogIsOpen, setDialogIsOpen] = useState(false);
-
-    const handleDialogClose = () => setDialogIsOpen(false);
-    const handleDialogOpen = () => setDialogIsOpen(true);
+    const [dialogIsOpen, toggleDialog] = useToggle(false);
+    const [changePassModalIsOpen, toggleChangePassModal] = useToggle(false);
 
     return (
         <>
@@ -66,12 +65,14 @@ const AvatarPopover: React.FC = () => {
             >
                 <Typography sx={{ ml: 2, mb: 1 }} variant='subtitle2'>{auth.username} (Admin)</Typography>
                 <Divider />
-                <MenuItem sx={{ py: 2 }}>
+
+                <MenuItem onClick={toggleChangePassModal} sx={{ py: 2 }}>
                     <LockRoundedIcon sx={{ mr: 3 }} />
                     <Typography variant='body2'>Alterar palavra-passe</Typography>
                 </MenuItem>
+
                 <MenuItem
-                    onClick={handleDialogOpen}
+                    onClick={toggleDialog}
                     sx={{
                         '&:hover': {
                             backgroundColor: 'transparent'
@@ -82,9 +83,14 @@ const AvatarPopover: React.FC = () => {
                 </MenuItem>
             </Menu>
 
+            <ChangePasswordModal
+                isOpen={changePassModalIsOpen}
+                handleClose={toggleChangePassModal}
+            />
+
             <ConfirmationDialog
                 isOpen={dialogIsOpen}
-                handleClose={handleDialogClose}
+                handleClose={toggleDialog}
                 handleConfirm={logout}
                 title='Terminar sessão'
                 message='Tens a certeza que pretendes terminar sessão?'
