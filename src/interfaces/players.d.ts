@@ -7,4 +7,4 @@ export default interface IPlayer {
     // password: string;
 }
 
-export type IWeekPlayers = Omit<IPlayer, 'username' | 'password'>;
+export type IWeekPlayer = Omit<IPlayer, 'username' | 'password'>;

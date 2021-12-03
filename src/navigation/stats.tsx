@@ -6,7 +6,7 @@ import PrivateRoute from '../components/PrivateRoute';
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
 // import EditStat from '../pages/Stats/edit';
-// import CreateStat from '../pages/Stats/create';
+import CreateStat from '../pages/Stats/Create/index';
 import Stats from '../pages/Stats';
 //----------------------------------------------------------
 
@@ -29,7 +29,7 @@ const StatsNavigation: React.FC = () => {
                     <Sidebar />
                     <Content>
                         <Header />
-                        {/* <CreateStat /> */}
+                        <CreateStat />
                     </Content>
                 </Container>
             </PrivateRoute>
