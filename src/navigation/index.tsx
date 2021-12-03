@@ -11,7 +11,7 @@ import WeeksNavigation from './weeks';
 import MvpsNavigation from './mvps';
 import BestFivesNavigation from './bestFives';
 import MvpVotesNavigation from './mvpVotes';
-import BestFiveVotesNavigation from './bestFiveVotes';
+// import BestFiveVotesNavigation from './bestFiveVotes';
 import Login from '../pages/Login';
 //----------------------------------------------------------
 import { AuthContextProvider } from '../contexts/auth';
@@ -42,7 +42,7 @@ const Navigation: React.FC = () => {
                                 <MvpsNavigation />
                                 <BestFivesNavigation />
                                 <MvpVotesNavigation />
-                                <BestFiveVotesNavigation />
+                                {/* <BestFiveVotesNavigation /> */}
 
                                 <Route path='/login' exact>
                                     <Login />
