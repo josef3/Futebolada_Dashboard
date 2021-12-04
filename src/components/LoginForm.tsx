@@ -15,7 +15,7 @@ import FormError from './FormError';
 import { useAuth } from '../contexts/auth';
 import useToggle from '../hooks/useToggle';
 import { login } from '../Api';
-import { requiredMessage } from '../utils';
+import { generalError, requiredMessage } from '../utils';
 // ----------------------------------------------------------------------
 
 interface IFormInputs {
@@ -49,10 +49,10 @@ const LoginForm: React.FC = () => {
         try {
             const { data: { accessToken, username } } = await login(formData);
             authDispatch({ type: 'LOGIN', payload: { accessToken, username } });
-            enqueueSnackbar(`Início de sessão com sucesso. Bem-vindo ${username}`, { variant: 'success' });
+            enqueueSnackbar(`Início de sessão com sucesso`, { variant: 'success' });
             history.push('/dashboard/jogadores');
         } catch (error: any) {
-            setLoginError(error?.response?.data?.message);
+            setLoginError(error?.response?.data?.message || generalError);
         }
     }
 

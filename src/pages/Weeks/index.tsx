@@ -22,6 +22,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../Api';
 import IWeek from '../../interfaces/weeks';
 import { ListContent } from '../../components/ListPages/styles';
+import { generalError } from '../../utils';
 //----------------------------------------------------------
 
 const Weeks: React.FC = () => {
@@ -54,7 +55,7 @@ const Weeks: React.FC = () => {
             enqueueSnackbar('Semanas eliminadas com sucesso', { variant: 'success' });
         }
         catch (error) {
-            enqueueSnackbar('Ocorreu um erro', { variant: 'error' });
+            enqueueSnackbar(generalError, { variant: 'error' });
         }
         finally {
             mutate();

@@ -22,6 +22,7 @@ import useFetch from '../../hooks/useFetch';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../Api';
 import IStats from '../../interfaces/stats';
+import { generalError } from '../../utils';
 //----------------------------------------------------------
 
 const Stats: React.FC = () => {
@@ -54,7 +55,7 @@ const Stats: React.FC = () => {
             enqueueSnackbar('Estatísticas eliminadas com sucesso', { variant: 'success' });
         }
         catch (error: any) {
-            enqueueSnackbar(error?.response?.data?.message, { variant: 'error' });
+            enqueueSnackbar(error?.response?.data?.message || generalError, { variant: 'error' });
         }
         finally {
             mutate();
@@ -107,7 +108,7 @@ const Stats: React.FC = () => {
             { field: 'shots_target', headerName: 'Remates Enquadrados', minWidth: 50, flex: 1, type: 'number' },
             { field: 'total_shots', headerName: 'Total Remates', minWidth: 50, flex: 1, type: 'number' },
             { field: 'tackles', headerName: 'Desarmes', minWidth: 50, flex: 1, type: 'number' },
-            { field: 'interceptions', headerName: 'Roubos', minWidth: 50, flex: 1, type: 'number' },
+            { field: 'interceptions', headerName: 'Recuperações', minWidth: 50, flex: 1, type: 'number' },
             { field: 'blocks', headerName: 'Bloqueios', minWidth: 50, flex: 1, type: 'number' },
             { field: 'nutmegs_made', headerName: 'Cuecas Efetuadas', minWidth: 50, flex: 1, type: 'number' },
             { field: 'nutmegs_suffered', headerName: 'Cuecas Sofridas', minWidth: 50, flex: 1, type: 'number' },

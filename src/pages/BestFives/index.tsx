@@ -22,6 +22,7 @@ import useToggle from '../../hooks/useToggle';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../Api';
 import IBestFive from '../../interfaces/bestFives';
+import { generalError } from '../../utils';
 //----------------------------------------------------------
 
 const BestFives: React.FC = () => {
@@ -53,7 +54,7 @@ const BestFives: React.FC = () => {
             enqueueSnackbar('Melhores 5 eliminados com sucesso', { variant: 'success' });
         }
         catch (error: any) {
-            enqueueSnackbar(error?.response?.data?.message, { variant: 'error' });
+            enqueueSnackbar(error?.response?.data?.message || generalError, { variant: 'error' });
         }
         finally {
             mutate();

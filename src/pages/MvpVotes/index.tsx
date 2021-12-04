@@ -22,6 +22,7 @@ import useToggle from '../../hooks/useToggle';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../Api';
 import IMvpVotes from '../../interfaces/mvpVotes';
+import { generalError } from '../../utils';
 //----------------------------------------------------------
 
 const MvpVotes: React.FC = () => {
@@ -54,7 +55,7 @@ const MvpVotes: React.FC = () => {
             enqueueSnackbar('Voto(s) mvp eliminado(s) com sucesso', { variant: 'success' });
         }
         catch (error: any) {
-            enqueueSnackbar(error?.response?.data?.message || 'Ocorreu um erro', { variant: 'error' });
+            enqueueSnackbar(error?.response?.data?.message || generalError, { variant: 'error' });
         }
         finally {
             mutate();
