@@ -19,9 +19,9 @@ import FormError from '../../components/FormError';
 //-------------------- Utils --------------------------
 import useFetch from '../../hooks/useFetch';
 import API from '../../Api';
-import { requiredMessage, typeErrorMessage } from '../../utils';
+import { requiredMessage, numberTypeErrorMessage, generalError } from '../../utils';
 import IWeek from '../../interfaces/weeks';
-import { IWeekPlayers } from '../../interfaces/players';
+import { IWeekPlayer } from '../../interfaces/players';
 //----------------------------------------------------------
 
 interface IFormInputs {
@@ -32,13 +32,13 @@ interface IFormInputs {
 
 const schema = Yup.object({
     idWeek: Yup.number()
-        .typeError(typeErrorMessage('Id Semana'))
+        .typeError(numberTypeErrorMessage('Id Semana'))
         .required(requiredMessage('Id semana')),
     idPlayer: Yup.number()
-        .typeError(typeErrorMessage('Id Jogador'))
+        .typeError(numberTypeErrorMessage('Id Jogador'))
         .required(requiredMessage('Id jogador')),
     percentage: Yup.number()
-        .typeError(typeErrorMessage('percentagem'))
+        .typeError(numberTypeErrorMessage('percentagem'))
         .min(1, 'A percentagem deve ser superior a 0')
         .max(100, 'A percentagem deve ser inferior a 100')
         .required(requiredMessage('percentagem')),
@@ -62,7 +62,7 @@ const CreateMvp: React.FC = () => {
 
     const weekId = watch('idWeek');
 
-    const { data: players, isValidating } = useFetch<IWeekPlayers[]>(!!weekId ? `weeks/${weekId}/players` : '');
+    const { data: players, isValidating } = useFetch<IWeekPlayer[]>(!!weekId ? `weeks/${weekId}/players` : '');
 
     const onSubmit = async (formData: IFormInputs) => {
         setSubmitError('');
@@ -71,14 +71,14 @@ const CreateMvp: React.FC = () => {
             enqueueSnackbar('Mvp criado com sucesso', { variant: 'success' });
             history.push('/dashboard/mvps');
         } catch (error: any) {
-            setSubmitError(error?.response?.data.message);
+            setSubmitError(error?.response?.data.message || generalError);
         }
     }
 
     if (!weeks) return <Loading />;
 
     return (
-        <FormGroup sx={{ width: '100%', maxWidth: 500, padding: '2rem', gap: '2rem', }}>
+        <FormGroup sx={{ width: '100%', maxWidth: 500, padding: '2rem', }}>
             <BackButton />
 
             <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>

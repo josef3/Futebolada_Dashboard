@@ -22,6 +22,7 @@ import useToggle from '../../hooks/useToggle';
 import useWindowSize from '../../hooks/useWindowSize';
 import API from '../../Api';
 import { IMvpInfo } from '../../interfaces/mvps';
+import { generalError } from '../../utils';
 //----------------------------------------------------------
 
 const Mvps: React.FC = () => {
@@ -54,7 +55,7 @@ const Mvps: React.FC = () => {
             enqueueSnackbar('Mvps eliminados com sucesso', { variant: 'success' });
         }
         catch (error: any) {
-            enqueueSnackbar(error?.response?.data?.message || 'Ocorreu um erro', { variant: 'error' });
+            enqueueSnackbar(error?.response?.data?.message || generalError, { variant: 'error' });
         }
         finally {
             mutate();

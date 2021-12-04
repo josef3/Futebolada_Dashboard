@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useSnackbar } from 'notistack';
 //-------------------- MUI --------------------------
-import FormGroup from '@mui/material/FormGroup';
+import Paper from '@mui/material/Paper';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
@@ -18,8 +18,8 @@ import FormError from '../../components/FormError';
 //-------------------- Utils --------------------------
 import useFetch from '../../hooks/useFetch';
 import API from '../../Api';
-import { requiredMessage, shallowEqual, typeErrorMessage } from '../../utils';
-import { IWeekPlayers } from '../../interfaces/players';
+import { requiredMessage, shallowEqual, numberTypeErrorMessage, generalError } from '../../utils';
+import { IWeekPlayer } from '../../interfaces/players';
 import IMvp from '../../interfaces/mvps';
 //----------------------------------------------------------
 
@@ -31,13 +31,13 @@ interface IFormInputs {
 
 const schema = Yup.object({
     id_week: Yup.number()
-        .typeError(typeErrorMessage('Id semana'))
+        .typeError(numberTypeErrorMessage('Id semana'))
         .required(requiredMessage('Id semana')),
     id_player: Yup.number()
-        .typeError(typeErrorMessage('Id Jogador'))
+        .typeError(numberTypeErrorMessage('Id Jogador'))
         .required(requiredMessage('Id jogador')),
     percentage: Yup.number()
-        .typeError(typeErrorMessage('percentagem'))
+        .typeError(numberTypeErrorMessage('percentagem'))
         .min(1, 'A percentagem deve ser superior a 0')
         .max(100, 'A percentagem deve ser inferior a 100')
         .required(requiredMessage('percentagem')),
@@ -51,7 +51,7 @@ const EditMvp: React.FC = () => {
     const [submitError, setSubmitError] = useState('');
 
     const { data: mvp } = useFetch<IMvp>(`mvps/${id}`);
-    const { data: players } = useFetch<IWeekPlayers[]>(!!mvp ? `weeks/${mvp.id_week}/players` : '');
+    const { data: players } = useFetch<IWeekPlayer[]>(!!mvp ? `weeks/${mvp.id_week}/players` : '');
 
     const {
         register,
@@ -81,79 +81,83 @@ const EditMvp: React.FC = () => {
             enqueueSnackbar('Mvp alterado com sucesso', { variant: 'success' });
             history.push('/dashboard/mvps');
         } catch (error: any) {
-            setSubmitError(error?.response?.data?.message);
+            setSubmitError(error?.response?.data?.message || generalError);
         }
     }
 
     if (!mvp || !players) return <Loading />;
 
     return (
-        <FormGroup sx={{ width: '100%', maxWidth: 500, padding: '2rem', gap: '2rem', }}>
+        <div style={{ padding: '1.6rem 5vw' }}>
             <BackButton />
-            <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
-                <Stack spacing={3}>
-                    {submitError && <FormError message={submitError} />}
 
-                    <TextField
-                        {...register('id_week')}
-                        label='Id Semana'
-                        disabled
-                    />
+            <Paper sx={{ width: '100%', maxWidth: 500, padding: '2rem 2rem 4rem 2rem', }}>
 
-                    <TextField
-                        {...register('id_player')}
-                        select
-                        label='Jogador'
-                        defaultValue={mvp.id_player}
-                        error={!!errors.id_player}
-                        helperText={errors.id_player?.message}
-                    >
-                        {!players && <p>A carregar...</p>}
-                        {!!players && players?.map(({ id_player, first_name, last_name, avatar }) => (
-                            <MenuItem key={id_player} value={id_player} sx={{ alignItems: 'center' }}>
-                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <img
-                                        loading='lazy'
-                                        width='30'
-                                        src={avatar}
-                                        alt={first_name}
-                                        style={{ borderRadius: '50%', marginRight: '1rem' }}
-                                    />
-                                    {first_name} {last_name}
-                                </div>
-                            </MenuItem>
-                        ))}
-                    </TextField>
+                <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
+                    <Stack spacing={3}>
+                        {submitError && <FormError message={submitError} />}
 
-                    <TextField
-                        {...register('percentage')}
-                        fullWidth
-                        label='Percentagem'
-                        InputProps={{
-                            startAdornment: <InputAdornment position='start'>%</InputAdornment>,
-                            inputProps: { min: 1, max: 100 }
-                        }}
-                        type='number'
-                        error={!!errors.percentage}
-                        helperText={errors.percentage?.message}
-                    />
-                </Stack>
+                        <TextField
+                            {...register('id_week')}
+                            label='Id Semana'
+                            disabled
+                        />
+
+                        <TextField
+                            {...register('id_player')}
+                            select
+                            label='Jogador'
+                            defaultValue={mvp.id_player}
+                            error={!!errors.id_player}
+                            helperText={errors.id_player?.message}
+                        >
+                            {!players && <p>A carregar...</p>}
+                            {!!players && players?.map(({ id_player, first_name, last_name, avatar }) => (
+                                <MenuItem key={id_player} value={id_player} sx={{ alignItems: 'center' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <img
+                                            loading='lazy'
+                                            width='30'
+                                            src={avatar}
+                                            alt={first_name}
+                                            style={{ borderRadius: '50%', marginRight: '1rem' }}
+                                        />
+                                        {first_name} {last_name}
+                                    </div>
+                                </MenuItem>
+                            ))}
+                        </TextField>
+
+                        <TextField
+                            {...register('percentage')}
+                            fullWidth
+                            label='Percentagem'
+                            InputProps={{
+                                startAdornment: <InputAdornment position='start'>%</InputAdornment>,
+                                inputProps: { min: 1, max: 100 }
+                            }}
+                            type='number'
+                            error={!!errors.percentage}
+                            helperText={errors.percentage?.message}
+                        />
+                    </Stack>
 
 
-                {isReadyToSubmit && (
-                    <LoadingButton
-                        fullWidth
-                        size='large'
-                        type='submit'
-                        variant='contained'
-                        loading={isSubmitting}
-                        sx={{ marginTop: '2rem' }}
-                    >
-                        Guardar alterações
-                    </LoadingButton>
-                )}
-            </form>
-        </FormGroup>
+                    {isReadyToSubmit && (
+                        <LoadingButton
+                            fullWidth
+                            size='large'
+                            type='submit'
+                            variant='contained'
+                            loading={isSubmitting}
+                            sx={{ marginTop: '2rem' }}
+                        >
+                            Guardar alterações
+                        </LoadingButton>
+                    )}
+                </form>
+            </Paper>
+        </div>
     )
 }
 
