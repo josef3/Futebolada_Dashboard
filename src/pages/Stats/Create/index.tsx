@@ -200,10 +200,9 @@ const CreateStats: React.FC = () => {
                     <LoadingButton
                         fullWidth
                         size='large'
-                        // type='submit'
                         variant='contained'
                         loading={isSubmitting}
-                        onClick={handleSubmit(onSubmit)}
+                        onClick={toggleDialog}
                     >
                         Criar
                     </LoadingButton>
