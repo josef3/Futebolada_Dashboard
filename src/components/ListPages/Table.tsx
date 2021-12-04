@@ -18,9 +18,8 @@ const Table: React.FC<IProps> = ({ idField, rows, columns, onSelectionModelChang
     const { height } = useWindowSize();
     const [rowsPerPage, setRowsPerPage] = useState(5);
 
-    //set row per pages as 10 if the height of the screen is higher than 1000 
     useEffect(() => {
-        height > 1000 && setRowsPerPage(10);
+        height > 950 && setRowsPerPage(10);
     }, [height])
 
     return (

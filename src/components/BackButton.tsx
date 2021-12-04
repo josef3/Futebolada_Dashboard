@@ -15,7 +15,7 @@ const BackButton: React.FC = () => {
             color='inherit'
             startIcon={<BackIcon />}
             onClick={() => history.goBack()}
-            sx={{ width: 100 }}
+            sx={{ width: 100, mb: 3 }}
         >
             <Typography>Voltar</Typography>
         </Button>

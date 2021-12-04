@@ -88,75 +88,72 @@ const EditMvp: React.FC = () => {
     if (!mvp || !players) return <Loading />;
 
     return (
-        <div style={{ padding: '1.6rem 5vw' }}>
+        <div style={{ padding: '1.6rem 5vw', maxWidth: 500 }}>
             <BackButton />
 
-            <Paper sx={{ width: '100%', maxWidth: 500, padding: '2rem 2rem 4rem 2rem', }}>
+            <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
+                <Stack spacing={3}>
+                    {submitError && <FormError message={submitError} />}
 
-                <form autoComplete='off' noValidate onSubmit={handleSubmit(onSubmit)}>
-                    <Stack spacing={3}>
-                        {submitError && <FormError message={submitError} />}
+                    <TextField
+                        {...register('id_week')}
+                        label='Id Semana'
+                        disabled
+                    />
 
-                        <TextField
-                            {...register('id_week')}
-                            label='Id Semana'
-                            disabled
-                        />
+                    <TextField
+                        {...register('id_player')}
+                        select
+                        label='Jogador'
+                        defaultValue={mvp.id_player}
+                        error={!!errors.id_player}
+                        helperText={errors.id_player?.message}
+                    >
+                        {!players && <p>A carregar...</p>}
+                        {!!players && players?.map(({ id_player, first_name, last_name, avatar }) => (
+                            <MenuItem key={id_player} value={id_player} sx={{ alignItems: 'center' }}>
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <img
+                                        loading='lazy'
+                                        width='30'
+                                        src={avatar}
+                                        alt={first_name}
+                                        style={{ borderRadius: '50%', marginRight: '1rem' }}
+                                    />
+                                    {first_name} {last_name}
+                                </div>
+                            </MenuItem>
+                        ))}
+                    </TextField>
 
-                        <TextField
-                            {...register('id_player')}
-                            select
-                            label='Jogador'
-                            defaultValue={mvp.id_player}
-                            error={!!errors.id_player}
-                            helperText={errors.id_player?.message}
-                        >
-                            {!players && <p>A carregar...</p>}
-                            {!!players && players?.map(({ id_player, first_name, last_name, avatar }) => (
-                                <MenuItem key={id_player} value={id_player} sx={{ alignItems: 'center' }}>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img
-                                            loading='lazy'
-                                            width='30'
-                                            src={avatar}
-                                            alt={first_name}
-                                            style={{ borderRadius: '50%', marginRight: '1rem' }}
-                                        />
-                                        {first_name} {last_name}
-                                    </div>
-                                </MenuItem>
-                            ))}
-                        </TextField>
-
-                        <TextField
-                            {...register('percentage')}
-                            fullWidth
-                            label='Percentagem'
-                            InputProps={{
-                                startAdornment: <InputAdornment position='start'>%</InputAdornment>,
-                                inputProps: { min: 1, max: 100 }
-                            }}
-                            type='number'
-                            error={!!errors.percentage}
-                            helperText={errors.percentage?.message}
-                        />
-                    </Stack>
+                    <TextField
+                        {...register('percentage')}
+                        fullWidth
+                        label='Percentagem'
+                        InputProps={{
+                            startAdornment: <InputAdornment position='start'>%</InputAdornment>,
+                            inputProps: { min: 1, max: 100 }
+                        }}
+                        type='number'
+                        error={!!errors.percentage}
+                        helperText={errors.percentage?.message}
+                    />
+                </Stack>
 
 
-                    {isReadyToSubmit && (
-                        <LoadingButton
-                            fullWidth
-                            size='large'
-                            type='submit'
-                            variant='contained'
-                            loading={isSubmitting}
-                            sx={{ marginTop: '2rem' }}
-                        >
-                            Guardar alterações
-                        </LoadingButton>
-                    )}
-                </form>
-            </Paper>
+                {isReadyToSubmit && (
+                    <LoadingButton
+                        fullWidth
+                        size='large'
+                        type='submit'
+                        variant='contained'
+                        loading={isSubmitting}
+                        sx={{ marginTop: '2rem' }}
+                    >
+                        Guardar alterações
+                    </LoadingButton>
+                )}
+            </form>
         </div>
     )
 }

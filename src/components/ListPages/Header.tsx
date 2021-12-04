@@ -19,10 +19,10 @@ const Header: React.FC<IProps> = ({ title, newLabel, newUrl }) => {
             <Typography variant='h4'>{title}</Typography>
 
             {newLabel && newUrl && (
-                <Link to={newUrl} style={{ textDecoration: 'none' }}>
-                    <Button variant='contained' size='large'>
-                        <AddIcon />
-                        <Typography sx={{ display: { xs: 'none', sm: 'inline-flex' } }}> {newLabel}</Typography>
+                <Link to={newUrl}>
+                    <Button variant='contained' sx={{ gap: 1 }}>
+                        <AddIcon fontSize='small' />
+                        {newLabel}
                     </Button>
                 </Link>
             )}
@@ -38,6 +38,10 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+
+    a { 
+        text-decoration: none;
+    }
 `;
 
 export default Header;
