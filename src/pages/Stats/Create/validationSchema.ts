@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 //-------------------- Utils --------------------------
-import { numberTypeErrorMessage, requiredMessage } from '../../../utils';
+import { numberTypeErrorMessage, requiredMessage } from 'utils';
 //----------------------------------------------------------
 
 const higherOrEqualMessage = (field: string, value: number = 0) => `O nº de ${field} deve ser igual ou superior a ${value}`;

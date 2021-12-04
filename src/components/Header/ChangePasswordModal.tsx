@@ -12,13 +12,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 //-------------------- Components --------------------------
-import ShowPasswordIcon from '../ShowPasswordIcon';
-import Loading from '../Loading';
-import FormError from '../FormError';
+import ShowPasswordIcon from 'components/ShowPasswordIcon';
+import Loading from 'components/Loading';
+import FormError from 'components/FormError';
 //-------------------- Utils --------------------------
-import { generalError, requiredMessage } from '../../utils';
-import useToggle from '../../hooks/useToggle';
-import API from '../../Api';
+import { generalError, requiredMessage } from 'utils';
+import useToggle from 'hooks/useToggle';
+import API from 'Api';
 //----------------------------------------------------------
 
 interface IProps {

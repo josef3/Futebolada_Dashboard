@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import { DataGrid, GridSelectionModel, GridCallbackDetails } from '@mui/x-data-grid';
 //-------------------- Utils --------------------------
-import useWindowSize from '../../hooks/useWindowSize';
-import PT_LOCALE_TEXT from '../../utils/gridLocaleText';
+import useWindowSize from 'hooks/useWindowSize';
+import PT_LOCALE_TEXT from 'utils/gridLocaleText';
 //----------------------------------------------------------
 
 interface IProps {

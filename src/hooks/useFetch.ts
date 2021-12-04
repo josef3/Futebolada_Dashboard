@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import API from '../Api';
+import API from 'Api';
 
 const revalidateOptions = {
     revalidateOnFocus: false,

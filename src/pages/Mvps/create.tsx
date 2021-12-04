@@ -13,15 +13,15 @@ import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 import LoadingButton from '@mui/lab/LoadingButton';
 //-------------------- Components --------------------------
-import BackButton from '../../components/BackButton';
-import Loading from '../../components/Loading';
-import FormError from '../../components/FormError';
+import BackButton from 'components/BackButton';
+import Loading from 'components/Loading';
+import FormError from 'components/FormError';
 //-------------------- Utils --------------------------
-import useFetch from '../../hooks/useFetch';
-import API from '../../Api';
-import { requiredMessage, numberTypeErrorMessage, generalError } from '../../utils';
-import IWeek from '../../interfaces/weeks';
-import { IWeekPlayer } from '../../interfaces/players';
+import useFetch from 'hooks/useFetch';
+import API from 'Api';
+import { requiredMessage, numberTypeErrorMessage, generalError } from 'utils';
+import IWeek from 'interfaces/weeks';
+import { IWeekPlayer } from 'interfaces/players';
 //----------------------------------------------------------
 
 interface IFormInputs {
@@ -44,7 +44,7 @@ const schema = Yup.object({
         .required(requiredMessage('percentagem')),
 }).required();
 
-const CreateMvp: React.FC = () => {
+const CreateMvp = () => {
     const { enqueueSnackbar } = useSnackbar();
     const history = useHistory();
 

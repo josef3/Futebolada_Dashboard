@@ -16,7 +16,7 @@ import {
 import ErrorIcon from '@mui/icons-material/ErrorOutlineRounded';
 import { FieldArrayWithId, UseFormRegister } from 'react-hook-form';
 import { IFormInputs } from './index';
-import IPlayer from '../../../interfaces/players';
+import IPlayer from 'interfaces/players';
 import { STATS } from './stats';
 //----------------------------------------------------------
 

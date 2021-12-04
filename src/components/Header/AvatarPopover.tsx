@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 //-------------------- MUI --------------------------
 import { Avatar, Divider, Menu, MenuItem, Typography, Button, IconButton } from '@mui/material';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 //-------------------- Components --------------------------
-import ConfirmationDialog from '../ConfirmationDialog';
+import ConfirmationDialog from 'components/ConfirmationDialog';
 import ChangePasswordModal from './ChangePasswordModal';
 //-------------------- Utils --------------------------
-import { useAuth } from '../../contexts/auth';
-import useToggle from '../../hooks/useToggle';
+import { useAuth } from 'contexts/auth';
+import useToggle from 'hooks/useToggle';
 //----------------------------------------------------------
 
-const AvatarPopover: React.FC = () => {
+const AvatarPopover = () => {
     const { auth, authDispatch } = useAuth();
     const history = useHistory();
 

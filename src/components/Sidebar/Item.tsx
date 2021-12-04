@@ -4,17 +4,17 @@ import { Link, useLocation } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import Zoom from '@mui/material/Zoom';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 //----------------------------------------------------------
 
-interface Props {
+interface IProps {
     title: string;
     path: string;
     icon: JSX.Element;
     isOpen?: boolean;
 }
 
-const Item: React.FC<Props> = ({ title, path, icon, isOpen = true }) => {
+const Item: React.FC<IProps> = ({ title, path, icon, isOpen = true }) => {
     const location = useLocation();
 
     const isActive = location.pathname === path;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 //-------------------- MUI --------------------------
 import { Typography, Alert, IconButton } from '@mui/material';
 //-------------------- Icons --------------------------
@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/CloseRounded';
 const TEST_USER = 'test';
 const TEST_PASSWORD = 'test123';
 
-const ReadOnlyAlert: React.FC = () => {
+const ReadOnlyAlert = () => {
     const [alertOpen, setAlertOpen] = useState(true);
 
     return (

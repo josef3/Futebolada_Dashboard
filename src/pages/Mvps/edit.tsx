@@ -12,15 +12,15 @@ import Stack from '@mui/material/Stack';
 import InputAdornment from '@mui/material/InputAdornment';
 import LoadingButton from '@mui/lab/LoadingButton';
 //-------------------- Components --------------------------
-import BackButton from '../../components/BackButton';
-import Loading from '../../components/Loading';
-import FormError from '../../components/FormError';
+import BackButton from 'components/BackButton';
+import Loading from 'components/Loading';
+import FormError from 'components/FormError';
 //-------------------- Utils --------------------------
-import useFetch from '../../hooks/useFetch';
-import API from '../../Api';
-import { requiredMessage, shallowEqual, numberTypeErrorMessage, generalError } from '../../utils';
-import { IWeekPlayer } from '../../interfaces/players';
-import IMvp from '../../interfaces/mvps';
+import useFetch from 'hooks/useFetch';
+import API from 'Api';
+import { requiredMessage, shallowEqual, numberTypeErrorMessage, generalError } from 'utils';
+import { IWeekPlayer } from 'interfaces/players';
+import IMvp from 'interfaces/mvps';
 //----------------------------------------------------------
 
 interface IFormInputs {
@@ -43,7 +43,7 @@ const schema = Yup.object({
         .required(requiredMessage('percentagem')),
 }).required();
 
-const EditMvp: React.FC = () => {
+const EditMvp = () => {
     const { enqueueSnackbar } = useSnackbar();
     const history = useHistory();
     const { id } = useParams<{ id: string }>();

@@ -3,14 +3,14 @@ import { Route, RouteProps, useHistory } from 'react-router-dom';
 //-------------------- Components --------------------------
 import Loading from './Loading';
 //-------------------- Utils --------------------------
-import { useAuth } from '../contexts/auth';
-import API from '../Api';
-import { IAdminInfo } from '../interfaces/admin';
+import { useAuth } from 'contexts/auth';
+import { IAdminInfo } from 'interfaces/admin';
+import API from 'Api';
 //----------------------------------------------------------
 
-interface Props extends RouteProps { }
+interface IProps extends RouteProps { }
 
-const PrivateRoute: React.FC<Props> = ({ children, ...rest }) => {
+const PrivateRoute: React.FC<IProps> = ({ children, ...rest }) => {
     const history = useHistory();
     const { auth, authDispatch } = useAuth();
 

@@ -1,5 +1,5 @@
 import React, { createContext, Dispatch, Reducer, useContext, useReducer } from 'react';
-import API from '../Api';
+import API from 'Api';
 
 interface Actions {
     type: 'LOGIN' | 'LOGOUT';

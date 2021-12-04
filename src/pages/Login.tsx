@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 //-------------------- MUI --------------------------
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 import { Stack, Container, Typography, } from '@mui/material';
 //-------------------- Components --------------------------
-import LoginForm from '../components/LoginForm';
-import ReadOnlyAlert from '../components/ReadOnlyAlert';
-import Loading from '../components/Loading';
+import LoginForm from 'components/LoginForm';
+import ReadOnlyAlert from 'components/ReadOnlyAlert';
+import Loading from 'components/Loading';
 //-------------------- Utils --------------------------
-import { useAuth } from '../contexts/auth';
-import API from '../Api';
-import { IAdminInfo } from '../interfaces/admin';
+import { useAuth } from 'contexts/auth';
+import API from 'Api';
+import { IAdminInfo } from 'interfaces/admin';
 //----------------------------------------------------------
 
-const Login: React.FC = () => {
+const Login = () => {
     const history = useHistory();
     const { auth, authDispatch } = useAuth();
     const [isLoading, setIsLoading] = useState(false);

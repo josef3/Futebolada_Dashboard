@@ -1,17 +1,16 @@
-import React from 'react';
 //-------------------- MUI --------------------------
 import { styled } from '@mui/system';
 import { Drawer, Box, Typography, IconButton, } from '@mui/material';
 //-------------------- Icons --------------------------
 import MenuIcon from '@mui/icons-material/MenuRounded';
 //-------------------- Components --------------------------
-import Item from '../Sidebar/Item';
+import Item from 'components/Sidebar/Item';
 //-------------------- Utils --------------------------
-import { sidebarOptions } from '../Sidebar';
-import useToggle from '../../hooks/useToggle';
+import { sidebarOptions } from 'components/Sidebar';
+import useToggle from 'hooks/useToggle';
 //----------------------------------------------------------
 
-const Burger: React.FC = () => {
+const Burger = () => {
     const [drawerOpen, toggleDrawer] = useToggle(false);
 
     return (

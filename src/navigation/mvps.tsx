@@ -2,17 +2,17 @@ import React from 'react';
 //-------------------- Components --------------------------
 import Container from './Container';
 import Content from './Content';
-import PrivateRoute from '../components/PrivateRoute';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import EditMvp from '../pages/Mvps/edit';
-import CreateMvp from '../pages/Mvps/create';
-import Mvps from '../pages/Mvps';
+import PrivateRoute from 'components/PrivateRoute';
+import Sidebar from 'components/Sidebar';
+import Header from 'components/Header';
+import EditMvp from 'pages/Mvps/edit';
+import CreateMvp from 'pages/Mvps/create';
+import Mvps from 'pages/Mvps';
 //----------------------------------------------------------
 
 const BASE_URL = '/dashboard/mvps';
 
-const MvpsNavigation: React.FC = () => {
+const MvpsNavigation = () => {
     return (
         <>
             <PrivateRoute path={`${BASE_URL}/:id/editar`} exact>

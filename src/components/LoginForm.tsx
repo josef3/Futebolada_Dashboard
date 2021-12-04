@@ -12,10 +12,10 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import ShowPasswordIcon from './ShowPasswordIcon';
 import FormError from './FormError';
 //-------------------- Utils --------------------------
-import { useAuth } from '../contexts/auth';
-import useToggle from '../hooks/useToggle';
-import { login } from '../Api';
-import { generalError, requiredMessage } from '../utils';
+import { useAuth } from 'contexts/auth';
+import useToggle from 'hooks/useToggle';
+import { login } from 'Api';
+import { generalError, requiredMessage } from 'utils';
 // ----------------------------------------------------------------------
 
 interface IFormInputs {
@@ -28,7 +28,7 @@ const loginSchema = Yup.object({
     password: Yup.string().required(requiredMessage('Palavra-passe')),
 }).required();
 
-const LoginForm: React.FC = () => {
+const LoginForm = () => {
     const { enqueueSnackbar } = useSnackbar();
     const history = useHistory();
     const { authDispatch } = useAuth();

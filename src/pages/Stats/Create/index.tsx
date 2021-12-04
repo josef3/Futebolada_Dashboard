@@ -13,19 +13,19 @@ import {
 } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 //-------------------- Components --------------------------
-import BackButton from '../../../components/BackButton';
-import Loading from '../../../components/Loading';
+import BackButton from 'components/BackButton';
+import Loading from 'components/Loading';
 import StatsTable from './StatsTable';
-import ConfirmationDialog from '../../../components/ConfirmationDialog';
-import FormError from '../../../components/FormError';
+import ConfirmationDialog from 'components/ConfirmationDialog';
+import FormError from 'components/FormError';
 //-------------------- Utils --------------------------
-import useFetch from '../../../hooks/useFetch';
-import useToggle from '../../../hooks/useToggle';
-import IWeek from '../../../interfaces/weeks';
-import IPlayer, { IWeekPlayer } from '../../../interfaces/players';
-import API from '../../../Api';
-import { generalError } from '../../../utils';
-import autocompleteLocaleText from '../../../utils/autocompleteLocaleText';
+import useFetch from 'hooks/useFetch';
+import useToggle from 'hooks/useToggle';
+import IWeek from 'interfaces/weeks';
+import IPlayer, { IWeekPlayer } from 'interfaces/players';
+import API from 'Api';
+import { generalError } from 'utils';
+import autocompleteLocaleText from 'utils/autocompleteLocaleText';
 import schema from './validationSchema';
 //----------------------------------------------------------
 
@@ -57,7 +57,7 @@ const statsDefaultValues = {
     nutmegsMade: 0,
 }
 
-const CreateStats: React.FC = () => {
+const CreateStats = () => {
     const history = useHistory();
     const { data: weeks } = useFetch<IWeek[]>('weeks');
     const { data: players } = useFetch<IPlayer[]>('players');

@@ -1,4 +1,3 @@
-import React from 'react';
 //-------------------- MUI --------------------------
 import IconButton from '@mui/material/IconButton';
 //-------------------- Icons --------------------------
@@ -8,11 +7,11 @@ import MoonIcon from '@mui/icons-material/Brightness2Rounded';
 import AvatarPopover from './AvatarPopover';
 import Burger from './Burger';
 //-------------------- Utils --------------------------
-import { useTheme } from '../../contexts/theme';
+import { useTheme } from 'contexts/theme';
 import { styled } from '@mui/system';
 //----------------------------------------------------------
 
-const Header: React.FC = () => {
+const Header = () => {
     const { theme, themeDispatch } = useTheme();
 
     return (

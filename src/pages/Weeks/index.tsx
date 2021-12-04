@@ -10,22 +10,22 @@ import Chip from '@mui/material/Chip';
 import DeleteIcon from '@mui/icons-material/DeleteRounded';
 import EditIcon from '@mui/icons-material/EditRounded';
 //-------------------- Components --------------------------
-import Loading from '../../components/Loading';
-import Header from '../../components/ListPages/Header';
-import DeleteSelected from '../../components/ListPages/DeleteSelected';
-import Table from '../../components/ListPages/Table';
-import ConfirmationDialog from '../../components/ConfirmationDialog';
+import Loading from 'components/Loading';
+import Header from 'components/ListPages/Header';
+import DeleteSelected from 'components/ListPages/DeleteSelected';
+import Table from 'components/ListPages/Table';
+import ConfirmationDialog from 'components/ConfirmationDialog';
 //-------------------- Utils --------------------------
-import useToggle from '../../hooks/useToggle';
-import useFetch from '../../hooks/useFetch';
-import useWindowSize from '../../hooks/useWindowSize';
-import API from '../../Api';
-import IWeek from '../../interfaces/weeks';
-import { ListContent } from '../../components/ListPages/styles';
-import { generalError } from '../../utils';
+import useToggle from 'hooks/useToggle';
+import useFetch from 'hooks/useFetch';
+import useWindowSize from 'hooks/useWindowSize';
+import API from 'Api';
+import IWeek from 'interfaces/weeks';
+import { ListContent } from 'components/ListPages/styles';
+import { generalError } from 'utils';
 //----------------------------------------------------------
 
-const Weeks: React.FC = () => {
+const Weeks = () => {
     const { enqueueSnackbar } = useSnackbar();
     const { width } = useWindowSize();
     const history = useHistory();

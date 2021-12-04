@@ -10,21 +10,21 @@ import { GridActionsCellItem, GridRenderCellParams, GridRowParams } from '@mui/x
 import DeleteIcon from '@mui/icons-material/DeleteRounded';
 import EditIcon from '@mui/icons-material/EditRounded';
 //-------------------- Components --------------------------
-import Loading from '../../components/Loading';
-import Header from '../../components/ListPages/Header';
-import Table from '../../components/ListPages/Table';
-import DeleteSelected from '../../components/ListPages/DeleteSelected';
-import ConfirmationDialog from '../../components/ConfirmationDialog';
-import { ListContent } from '../../components/ListPages/styles';
+import Loading from 'components/Loading';
+import Header from 'components/ListPages/Header';
+import Table from 'components/ListPages/Table';
+import DeleteSelected from 'components/ListPages/DeleteSelected';
+import ConfirmationDialog from 'components/ConfirmationDialog';
+import { ListContent } from 'components/ListPages/styles';
 //-------------------- Utils --------------------------
-import useFetch from '../../hooks/useFetch';
-import useToggle from '../../hooks/useToggle';
-import useWindowSize from '../../hooks/useWindowSize';
-import API from '../../Api';
-import IPlayer from '../../interfaces/players';
+import useFetch from 'hooks/useFetch';
+import useToggle from 'hooks/useToggle';
+import useWindowSize from 'hooks/useWindowSize';
+import API from 'Api';
+import IPlayer from 'interfaces/players';
 //----------------------------------------------------------
 
-const Players: React.FC = () => {
+const Players = () => {
     const { enqueueSnackbar } = useSnackbar();
     const { width } = useWindowSize();
     const history = useHistory();

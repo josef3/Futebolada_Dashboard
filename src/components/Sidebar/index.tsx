@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 //-------------------- MUI --------------------------
 import { Paper, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 //-------------------- Icons --------------------------
 import CalendarIcon from '@mui/icons-material/CalendarTodayRounded';
 import StatsIcon from '@mui/icons-material/EqualizerRounded';
@@ -11,8 +11,8 @@ import GroupsIcon from '@mui/icons-material/GroupsRounded';
 //-------------------- Components --------------------------
 import Item from './Item';
 //-------------------- Utils --------------------------
-import { useSidebarConfig } from '../../contexts/sidebarConfig';
-import useWindowSize from '../../hooks/useWindowSize';
+import { useSidebarConfig } from 'contexts/sidebarConfig';
+import useWindowSize from 'hooks/useWindowSize';
 //----------------------------------------------------------
 
 export const sidebarOptions = [
@@ -53,7 +53,7 @@ export const sidebarOptions = [
     }
 ]
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
     const { width } = useWindowSize();
     const { sidebarConfig: { sidebarIsOpen }, sidebarConfigDispatch } = useSidebarConfig();
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 //-------------------- MUI --------------------------
 import Button from '@mui/material/Button';
@@ -7,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import BackIcon from '@mui/icons-material/KeyboardBackspaceRounded';
 //----------------------------------------------------------
 
-const BackButton: React.FC = () => {
+const BackButton = () => {
     const history = useHistory();
 
     return (

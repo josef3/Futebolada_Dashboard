@@ -12,14 +12,14 @@ import MvpsNavigation from './mvps';
 import BestFivesNavigation from './bestFives';
 import MvpVotesNavigation from './mvpVotes';
 // import BestFiveVotesNavigation from './bestFiveVotes';
-import Login from '../pages/Login';
+import Login from 'pages/Login';
 //----------------------------------------------------------
-import { AuthContextProvider } from '../contexts/auth';
-import { SidebarConfigContextProvider } from '../contexts/sidebarConfig';
-import ThemeConfig from '../theme';
+import { AuthContextProvider } from 'contexts/auth';
+import { SidebarConfigContextProvider } from 'contexts/sidebarConfig';
+import ThemeConfig from 'theme';
 //----------------------------------------------------------
 
-const Navigation: React.FC = () => {
+const Navigation = () => {
     const notistackRef = React.createRef<any>();
     const onClickDismiss = (key: SnackbarKey) => () => notistackRef.current.closeSnackbar(key);
 
