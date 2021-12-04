@@ -29,8 +29,8 @@ const schema = Yup.object({
                 .typeError(numberTypeErrorMessage('Remates Enquadrados'))
                 .min(0, higherOrEqualMessage('Remates Enquadrados'))
                 .max(60, lowerOrEqualMessage('Remates Enquadrados'))
-                .required(requiredMessage('Remates Enquadrados'))
-                .lessThan(Yup.ref('totalShots'), 'O nº de remates enq. não pode ser superior ao total'),
+                .max(Yup.ref('totalShots'), 'O nº de remates enq. não pode ser superior ao total')
+                .required(requiredMessage('Remates Enquadrados')),
             totalShots: Yup.number()
                 .typeError(numberTypeErrorMessage('Total de Remates'))
                 .min(0, higherOrEqualMessage('Total de Remates'))
