@@ -15,7 +15,7 @@ const Container: React.FC = ({ children }) => {
 const ContainerDiv = styled('div')(({ theme }) => ({
     display: 'flex',
     minHeight: '100vh',
-    width: '100%'
+    flex: 1
 }));
 
 export default Container;

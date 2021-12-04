@@ -16,8 +16,8 @@ const ContentDiv = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    // flexGrow: 1
-    width: '100%',
+    flex: 1,
+    overflowX: 'hidden'
 }));
 
 export default Content;
