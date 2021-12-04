@@ -111,7 +111,7 @@ const PT_LOCALE_TEXT: GridLocaleText = {
     // Used core components translation keys
     MuiTablePagination: {
         labelRowsPerPage: 'Linhas por pág.:',
-        labelDisplayedRows: ({ from, to, count }) => `${from}-${to} de ${count !== -1 ? count : `mais de ${to}`}`
+        labelDisplayedRows: ({ from, to, count }: any) => `${from}-${to} de ${count !== -1 ? count : `mais de ${to}`}`
     }
 };
 

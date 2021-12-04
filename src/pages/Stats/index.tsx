@@ -186,7 +186,7 @@ const Stats: React.FC = () => {
                 }}
                 handleConfirm={handleDelete}
                 title='Apagar registos'
-                message={`Tens a certeza que pretendes eliminar ${selected.length} ${selected.length === 1 ? 'mvp' : 'mvps'}? Cuidado: As alterações serão permanentes!`}
+                message={`Tens a certeza que pretendes eliminar ${selected.length} ${selected.length === 1 ? '' : 'estatísticas'}? Cuidado: As alterações serão permanentes!`}
                 type='error'
             />
         </>
